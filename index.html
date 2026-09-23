@@ -36,6 +36,16 @@ section{padding:88px 0}.section-head{max-width:720px;margin-bottom:38px}.section
 .cta{background:var(--red);color:#fff;text-align:center;padding:70px 0}.cta h2{font-size:44px;margin:0 0 12px}.cta p{margin:0 0 26px}.cta .btn{background:#fff;color:var(--red)}
 footer{background:#071524;color:#b9c5d2;padding:38px 0}.footer{display:flex;justify-content:space-between;align-items:center;gap:20px}.footer img{width:110px}
 .mobile-toggle{display:none}
+
+.mobile-call{display:none}
+@media(max-width:850px){
+ .mobile-call{display:flex;position:fixed;left:14px;right:14px;bottom:14px;z-index:9998;align-items:center;justify-content:center;
+ background:#d71920;color:#fff;text-decoration:none;font-weight:900;padding:15px 18px;border-radius:8px;
+ box-shadow:0 12px 32px #07152455;transform:translateY(90px);opacity:0;pointer-events:none;transition:transform .28s ease,opacity .28s ease}
+ .mobile-call.show{transform:translateY(0);opacity:1;pointer-events:auto}
+ body{padding-bottom:0}
+}
+
 @media(max-width:850px){
  .progress{height:5px}.container{width:min(100% - 28px,1180px)}.nav{height:72px;grid-template-columns:1fr auto}.logo{width:100px;height:62px}.links,.call{display:none}.tools{justify-self:end}.mobile-toggle{display:none}
  .hero{padding:46px 0 56px;background:#fff}.hero-grid{grid-template-columns:1fr;gap:32px}h1{font-size:49px}.hero-photo{height:390px}
@@ -63,7 +73,7 @@ footer{background:#071524;color:#b9c5d2;padding:38px 0}.footer{display:flex;just
 
 <section id="services" class="services"><div class="container">
 <div class="section-head"><div class="kicker" data-en="What we do" data-es="Lo que hacemos">What we do</div><h2 data-en="Plumbing services without the runaround." data-es="Servicios de plomería sin complicaciones.">Plumbing services without the runaround.</h2><p data-en="From the repair you need today to the bathroom upgrade you've been planning, 1st Choice keeps the process clear and the work professional." data-es="Desde una reparación urgente hasta la renovación de baño que estás planeando, 1st Choice mantiene el proceso claro y profesional.">From the repair you need today to the bathroom upgrade you've been planning, 1st Choice keeps the process clear and the work professional.</p></div>
-<div class="service-grid"><article class="service"><h3>Plumbing Repairs</h3><p>Leaks, valves, toilets, faucets and everyday plumbing problems.</p></article><article class="service"><h3>Drain & Sewer</h3><p>Help with slow drains, backups and recurring drainage issues.</p></article><article class="service"><h3>Water Heaters</h3><p>Repair and installation for reliable hot water.</p></article><article class="service"><h3>Fixture Installation</h3><p>Clean installation of faucets, sinks, toilets and plumbing fixtures.</p></article><article class="service"><h3>Bathroom Plumbing</h3><p>Shower, tub and bathroom plumbing for upgrades and remodels.</p></article><article class="service"><h3>New Plumbing</h3><p>New lines and plumbing installations planned for long-term reliability.</p></article></div>
+<div class="service-grid"><article class="service"><h3 data-en="Plumbing Repairs" data-es="Reparaciones de plomería">Plumbing Repairs</h3><p data-en="Leaks, valves, toilets, faucets and everyday plumbing problems." data-es="Fugas, válvulas, inodoros, grifos y problemas cotidianos de plomería.">Leaks, valves, toilets, faucets and everyday plumbing problems.</p></article><article class="service"><h3 data-en="Drain & Sewer" data-es="Drenajes y alcantarillado">Drain & Sewer</h3><p data-en="Help with slow drains, backups and recurring drainage issues." data-es="Ayuda con drenajes lentos, obstrucciones y problemas recurrentes de drenaje.">Help with slow drains, backups and recurring drainage issues.</p></article><article class="service"><h3 data-en="Water Heaters" data-es="Calentadores de agua">Water Heaters</h3><p data-en="Repair and installation for reliable hot water." data-es="Reparación e instalación para contar con agua caliente confiable.">Repair and installation for reliable hot water.</p></article><article class="service"><h3 data-en="Fixture Installation" data-es="Instalación de accesorios">Fixture Installation</h3><p data-en="Clean installation of faucets, sinks, toilets and plumbing fixtures." data-es="Instalación profesional de grifos, lavabos, inodoros y accesorios de plomería.">Clean installation of faucets, sinks, toilets and plumbing fixtures.</p></article><article class="service"><h3 data-en="Bathroom Plumbing" data-es="Plomería de baños">Bathroom Plumbing</h3><p data-en="Shower, tub and bathroom plumbing for upgrades and remodels." data-es="Plomería para duchas, bañeras y baños durante mejoras y remodelaciones.">Shower, tub and bathroom plumbing for upgrades and remodels.</p></article><article class="service"><h3 data-en="New Plumbing" data-es="Nuevas instalaciones">New Plumbing</h3><p data-en="New lines and plumbing installations planned for long-term reliability." data-es="Nuevas líneas e instalaciones de plomería planificadas para ofrecer confiabilidad a largo plazo.">New lines and plumbing installations planned for long-term reliability.</p></article></div>
 </div></section>
 
 <section id="about"><div class="container feature">
@@ -78,8 +88,9 @@ footer{background:#071524;color:#b9c5d2;padding:38px 0}.footer{display:flex;just
 <section class="cta"><div class="container"><h2 data-en="Need a plumber in Los Angeles?" data-es="¿Necesitas un plomero en Los Ángeles?">Need a plumber in Los Angeles?</h2><p data-en="Call 1st Choice Plumbing Services and talk directly about the job." data-es="Llama a 1st Choice Plumbing Services y cuéntanos qué necesitas.">Call 1st Choice Plumbing Services and talk directly about the job.</p><a class="btn" href="tel:+12134248544">(213) 424-8544</a></div></section>
 </main>
 <footer><div class="container footer"><img src="assets/logo.png" alt="1st Choice Plumbing Services"><div>© 2026 1st Choice Plumbing Services</div><div>Los Angeles, California • (213) 424-8544</div></div></footer>
+<a id="mobileCall" class="mobile-call" href="tel:+12134248544" data-en="Call 1st Choice • (213) 424-8544" data-es="Llamar a 1st Choice • (213) 424-8544">Call 1st Choice • (213) 424-8544</a>
 <script>
 const r=document.documentElement;
-function scrollFx(){const d=document.documentElement;let p=d.scrollTop/Math.max(1,d.scrollHeight-d.clientHeight);r.style.setProperty('--progress',(p*100)+'%');let c=p<.34?'#d71920':p<.68?'#103f78':'#ffffff';r.style.setProperty('--scroll',c)}addEventListener('scroll',scrollFx);scrollFx();
+function scrollFx(){const d=document.documentElement;let p=d.scrollTop/Math.max(1,d.scrollHeight-d.clientHeight);r.style.setProperty('--progress',(p*100)+'%');let c=p<.34?'#d71920':p<.68?'#103f78':'#ffffff';r.style.setProperty('--scroll',c);const mc=document.getElementById('mobileCall');if(mc)mc.classList.toggle('show',window.innerWidth<=850 && d.scrollTop>150)}addEventListener('scroll',scrollFx);addEventListener('resize',scrollFx);scrollFx();
 document.querySelectorAll('.lang button').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.lang button').forEach(x=>x.classList.remove('active'));b.classList.add('active');const l=b.dataset.lang;document.documentElement.lang=l;document.querySelectorAll('[data-'+l+']').forEach(x=>x.textContent=x.dataset[l])}));
 </script></body></html>
