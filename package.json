@@ -1,0 +1,7 @@
+{
+  "name": "first-choice-plumbing",
+  "version": "8.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Multipage 1st Choice Plumbing Services website with Vercel email endpoint"
+}

@@ -1,17 +1,35 @@
-1ST CHOICE PLUMBING — V7
-Upload/deploy this folder to Vercel. Site uses pure black backgrounds.
+1ST CHOICE PLUMBING SERVICES — RENOVATED MULTIPAGE SITE
 
-EMAIL FORM SETUP — REQUIRED BEFORE FORM CAN DELIVER EMAIL
-1. Obtain the business owner's destination email address.
-2. Create a Resend account and verify a domain authorized to send email.
-3. In Vercel Project Settings > Environment Variables set:
-   CONTACT_EMAIL = owner's destination email
-   RESEND_API_KEY = Resend API key
-   RESEND_FROM_EMAIL = verified sender address, e.g. requests@yourdomain.com
-4. Redeploy. The /api/contact endpoint will then deliver submissions.
-Without these settings the form deliberately displays a configuration error and does NOT falsely claim the request was sent.
-Do not place API keys in HTML or browser JavaScript.
+DEPLOY TO GITHUB / VERCEL
+Extract the ZIP and upload its contents to the repository root. index.html, assets/, api/, areas/ and blog/ should be at that root, not inside another nested folder.
+Import the repository into Vercel. Choose the Other framework preset, leave Build Command empty, and use the repository root as the static output directory (.). No frontend installation or build is required. Keep api/contact.js at the project root's api directory. package.json declares ES modules for this function.
+Preserve the .html page URLs. The included vercel.json sets cleanUrls to false.
+The package is prepared for Vercel; a deployment was not performed in this session.
 
-Content to confirm before publishing: 24/7 service availability, exact service list, family-owned claim, city coverage, company story, licensing, review links.
-All photo URLs are temporary stock/inspiration imagery and are not represented as completed projects.
-Replace sample About text and reviews page with verified owner information.
+EMAIL DELIVERY — REQUIRED CONFIGURATION
+The existing Resend integration is retained. In Vercel project environment variables set:
+CONTACT_EMAIL = the owner's destination business email
+RESEND_API_KEY = the private Resend API key
+RESEND_FROM_EMAIL = a sender authorized by the verified domain in Resend
+Redeploy after setting these values. Test a request and confirm actual receipt with the owner.
+Do not put keys or the recipient configuration into browser JavaScript. .env.example documents names only; .gitignore excludes local secret files.
+Without all three values, /api/contact returns 503 and the form offers the phone route. A request is shown as accepted only after an HTTP success response with ok: true. Provider acceptance is not a guarantee of inbox receipt or an appointment.
+
+REVIEWS
+Set the verified Google review profile URL in assets/config.js. The review button is hidden until that URL is configured. Add only approved, verified customer feedback; there are no fabricated quotes, counts or star ratings.
+
+PHOTOGRAPHY
+Concept images are local optimized WebP files. They are explicitly labeled and credited on photo-credits.html. Replace them with approved real photography and update the five entries records in assets/site.js, including both languages and alt descriptions. Retain attribution/license links while the licensed concept images are used.
+Fonts are bundled locally. Their OFL license notices are in assets/fonts/.
+
+SEO
+The original https://1st-choice-plumbing-nine.vercel.app domain is retained in canonical URLs, Open Graph, Article JSON-LD, sitemap.xml and robots.txt. If the production domain changes, update those places consistently before launch. All original article and service-area URLs remain.
+
+VALIDATION
+All 41 HTML pages passed local-link, anchor, H1, form and metadata audits. 2,932 simulated DOM assertions passed. Ten email-endpoint cases passed with mocked provider responses; no email was sent. See RENOVATION-NOTES.md for details.
+Browser preview failed due local connection timeout and then a browser security-policy rejection. Visual QA at 1440, 1024, 768, 390 and 360px and physical Safari/Chrome testing remain unverified. Live email needs the configuration above.
+
+Reference documentation:
+https://vercel.com/docs/functions/runtimes/node-js
+https://vercel.com/docs/functions/configuring-functions/runtime
+https://vercel.com/docs/project-configuration/vercel-json

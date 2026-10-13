@@ -1,1 +1,3 @@
-V5 complete redesign. Open index.html. Replace stock/remote image placeholders with licensed local files before production. Confirm 24/7 availability, service areas and service list with business owner. Site includes EN/ES, 22 local pages, 6 blog posts, mobile menu and call CTA.
+1st Choice Plumbing Services — renovated V8
+Start with README-SETUP.txt for deployment and email setup.
+See RENOVATION-NOTES.md for design, owner information and actual QA coverage.

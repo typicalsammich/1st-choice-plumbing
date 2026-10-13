@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://1st-choice-plumbing-nine.vercel.app/sitemap.xml

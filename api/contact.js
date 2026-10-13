@@ -4,6 +4,7 @@ export default async function handler(req,res){
  const {CONTACT_EMAIL,RESEND_API_KEY,RESEND_FROM_EMAIL}=process.env;
  if(!CONTACT_EMAIL||!RESEND_API_KEY||!RESEND_FROM_EMAIL)return res.status(503).json({error:'Email delivery is not configured yet.'});
  const fields=req.body||{};
+ if(fields.website)return res.status(400).json({error:'Invalid submission.'});
  const keys=['name','phone','email','service','city','message'];
  if(keys.some(k=>typeof fields[k]!=='string'||!fields[k].trim()))return res.status(400).json({error:'Please complete all fields.'});
  if(keys.some(k=>fields[k].length>3000)||!/^\S+@\S+\.\S+$/.test(fields.email))return res.status(400).json({error:'Invalid submission.'});

@@ -1,19 +1,69 @@
-const langButtons=document.querySelectorAll('[data-lang]');function setLanguage(l){document.documentElement.lang=l;document.querySelectorAll('[data-en][data-es]').forEach(el=>el.textContent=el.dataset[l]);langButtons.forEach(b=>{b.classList.toggle('active',b.dataset.lang===l);b.setAttribute('aria-pressed',String(b.dataset.lang===l))});localStorage.setItem('choice-lang',l);document.body.classList.remove('lang-animate');void document.body.offsetWidth;document.body.classList.add('lang-animate')}langButtons.forEach(b=>b.addEventListener('click',()=>setLanguage(b.dataset.lang)));setLanguage(localStorage.getItem('choice-lang')==='es'?'es':'en');const menu=document.querySelector('.menu-btn'),nav=document.querySelector('.nav');if(menu){menu.addEventListener('click',()=>{let o=nav.classList.toggle('open');menu.setAttribute('aria-expanded',String(o))});nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');menu.setAttribute('aria-expanded','false')}))}function scrollUpdate(){let d=document.documentElement,p=d.scrollTop/Math.max(1,d.scrollHeight-d.clientHeight);d.style.setProperty('--width',p*100+'%');d.style.setProperty('--progress',p<.33?'#df2935':p<.67?'#1c4c82':'#f0f5fb');document.querySelector('.mobile-call')?.classList.toggle('show',d.scrollTop>180)}addEventListener('scroll',scrollUpdate,{passive:true});addEventListener('resize',scrollUpdate);scrollUpdate();
-document.querySelectorAll('[data-contact-form]').forEach(form=>{
- form.addEventListener('submit',async event=>{
-  event.preventDefault();
-  const status=form.querySelector('.form-status'),button=form.querySelector('[type=submit]');
-  const payload=Object.fromEntries(new FormData(form).entries());
-  status.textContent=document.documentElement.lang==='es'?'Enviando...':'Sending...';
-  button.disabled=true;
-  try{
-   const response=await fetch('/api/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
-   const data=await response.json();
-   if(!response.ok)throw new Error(data.error||'Email delivery is not configured.');
-   status.textContent=document.documentElement.lang==='es'?'Solicitud enviada.':'Your request has been sent.';
-   form.reset();
-  }catch(error){
-   status.textContent=(document.documentElement.lang==='es'?'No se pudo enviar el formulario. Llame al (213) 424-8544. ':'Could not send the form. Please call (213) 424-8544. ')+(error.message||'');
-  }finally{button.disabled=false}
+(() => {
+ 'use strict';
+ const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+ const reduced=matchMedia('(prefers-reduced-motion: reduce)');
+ const storage={get:(s,k)=>{try{return window[s].getItem(k)}catch{return null}},set:(s,k,v)=>{try{window[s].setItem(k,v)}catch{}}};
+ let language=storage.get('localStorage','choice-lang')==='es'?'es':'en', languageTimer;
+ const say=(en,es)=>language==='es'?es:en;
+ function applyLanguage(l){
+  language=l;document.documentElement.lang=l;
+  $$('[data-en][data-es]').forEach(el=>el.textContent=el.dataset[l]);
+  $$('[data-label-en]').forEach(el=>el.setAttribute('aria-label',el.dataset[l==='es'?'labelEs':'labelEn']));
+  $$('[data-alt-en]').forEach(el=>el.alt=el.dataset[l==='es'?'altEs':'altEn']);
+  $$('[data-content-en]').forEach(el=>el.content=el.dataset[l==='es'?'contentEs':'contentEn']);
+  $$('[data-lang]').forEach(b=>{b.classList.toggle('active',b.dataset.lang===l);b.setAttribute('aria-pressed',String(b.dataset.lang===l))});
+  storage.set('localStorage','choice-lang',l);
+  if(gallery)renderGallery();
+  $$('[data-contact-form]').forEach(f=>{f.querySelectorAll('input,textarea,select').forEach(el=>el.setCustomValidity(''));const s=f.querySelector('.form-status');if(s.dataset.state)formStatus(s,s.dataset.state)});
+ }
+ function switchLanguage(l){clearTimeout(languageTimer);if(reduced.matches){applyLanguage(l);return}document.body.classList.add('lang-ready','lang-changing');languageTimer=setTimeout(()=>{applyLanguage(l);document.body.classList.remove('lang-changing')},120)}
+ $$('[data-lang]').forEach(b=>b.addEventListener('click',()=>switchLanguage(b.dataset.lang)));
+ // Menu focus stays within the drawer; background and scroll are suspended until it closes.
+ const menu=$('.menu-btn'), nav=$('.nav'),close=$('.menu-close');let menuOpen=false, previousOverflow='',backdrop;
+ const inertTargets=[$('main'),$('.footer'),$('.mobile-call'),$('.topline'),$('.brand'),$('.badges'),$('.header-actions')];
+ function openMenu(){menuOpen=true;nav.classList.add('open');menu.setAttribute('aria-expanded','true');nav.setAttribute('role','dialog');nav.setAttribute('aria-modal','true');previousOverflow=document.body.style.overflow;document.body.style.overflow='hidden';inertTargets.forEach(el=>el&&(el.inert=true));backdrop=document.createElement('div');backdrop.className='menu-backdrop';backdrop.addEventListener('click',closeMenu);document.body.append(backdrop);close.focus()}
+ function closeMenu(){if(!menuOpen)return;menuOpen=false;nav.classList.remove('open');menu.setAttribute('aria-expanded','false');nav.removeAttribute('role');nav.removeAttribute('aria-modal');document.body.style.overflow=previousOverflow;inertTargets.forEach(el=>el&&(el.inert=false));backdrop?.remove();menu.focus()}
+ menu?.addEventListener('click',()=>menuOpen?closeMenu():openMenu());close?.addEventListener('click',closeMenu);nav?.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));
+ function trap(event,root){if(event.key!=='Tab')return;const items=[...root.querySelectorAll('a[href],button:not([disabled]),input,select,textarea')].filter(el=>el.getClientRects().length);const first=items[0],last=items.at(-1);if(event.shiftKey&&document.activeElement===first){event.preventDefault();last.focus()}else if(!event.shiftKey&&document.activeElement===last){event.preventDefault();first.focus()}}
+ document.addEventListener('keydown',e=>{if(menuOpen){if(e.key==='Escape')closeMenu();trap(e,nav)}});matchMedia('(min-width:821px)').addEventListener('change',e=>{if(e.matches)closeMenu()});
+ let ticking=false;
+ function scrollUpdate(){const d=document.documentElement,p=Math.max(0,Math.min(1,d.scrollTop/Math.max(1,d.scrollHeight-d.clientHeight)));d.style.setProperty('--width',p*100+'%');d.style.setProperty('--progress',p<.33?'#c81925':p<.67?'#174a87':'#f5f5f5');const form=$('.form-section'),r=form?.getBoundingClientRect();const formVisible=r&&r.top<innerHeight&&r.bottom>0;$('.mobile-call')?.classList.toggle('show',d.scrollTop>180&&!formVisible&&!menuOpen);ticking=false}
+ addEventListener('scroll',()=>{if(!ticking){requestAnimationFrame(scrollUpdate);ticking=true}},{passive:true});addEventListener('resize',scrollUpdate);scrollUpdate();
+ function formStatus(el,state){el.dataset.state=state;el.textContent=({sending:say('Sending your request…','Enviando tu solicitud…'),sent:say('Your request was accepted by the email service. For availability, please call.','El servicio de correo aceptó tu solicitud. Para consultar disponibilidad, llama.'),error:say('We could not send your request. Please call (213) 424-8544.','No pudimos enviar tu solicitud. Llama al (213) 424-8544.'),configuration:say('Online requests are not available yet. Please call (213) 424-8544.','Las solicitudes en línea aún no están disponibles. Llama al (213) 424-8544.')})[state]||''}
+ $$('[data-contact-form]').forEach(form=>{
+  form.addEventListener('invalid',e=>{const el=e.target;if(el.validity.valueMissing)el.setCustomValidity(say('Please complete this field.','Completa este campo.'));else if(el.validity.typeMismatch)el.setCustomValidity(say('Please enter a valid email address.','Ingresa un correo electrónico válido.'))},true);
+  form.addEventListener('input',e=>e.target.setCustomValidity?.(''));
+  form.addEventListener('change',e=>e.target.setCustomValidity?.(''));
+  form.addEventListener('submit',async e=>{e.preventDefault();if(!form.reportValidity())return;const button=form.querySelector('[type=submit]'),status=form.querySelector('.form-status');button.disabled=true;form.setAttribute('aria-busy','true');formStatus(status,'sending');const controller=new AbortController(),timeout=setTimeout(()=>controller.abort(),15000);
+   try{const response=await fetch('/api/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(Object.fromEntries(new FormData(form))),signal:controller.signal});const data=await response.json();if(!response.ok||data.ok!==true){formStatus(status,response.status===503?'configuration':'error');return}formStatus(status,'sent');form.reset()}catch{formStatus(status,'error')}finally{clearTimeout(timeout);button.disabled=false;form.removeAttribute('aria-busy')}
+  });
  });
-});
+ const gallery=$('[data-gallery]'),dialog=$('.lightbox');let selected=0, galleryTimer=0, gallerySequence=0, priorFocus, suppressGalleryClick=false;
+ // Replacing these five records and local images is all that is needed for genuine project photography.
+ const entries=[
+  {file:'shower',en:'Shower & Bathroom Plumbing',es:'Duchas y baños',descEn:'The visible finish depends on the plumbing behind it. Shower and tub updates start with the right connections and access.',descEs:'El acabado visible depende de la plomería detrás. Las mejoras de duchas y bañeras empiezan por las conexiones y el acceso adecuados.',altEn:'Modern shower and bathroom fixtures, concept image',altEs:'Ducha moderna y accesorios de baño, imagen de referencia'},
+  {file:'heater',en:'Water Heater Installations',es:'Calentadores de agua',descEn:'Equipment, connections and available space all shape a water heater installation. Photo: Kskhh, CC BY-SA 4.0; concept image.',descEs:'El equipo, las conexiones y el espacio influyen en una instalación. Foto: Kskhh, CC BY-SA 4.0; imagen de referencia.',altEn:'Wall-mounted white water heater, concept image',altEs:'Calentador blanco montado en pared, imagen de referencia'},
+  {file:'fixtures',en:'Fixture Upgrades',es:'Mejoras de accesorios',descEn:'A fixture update can change the feel of a room. Compatibility with the existing supply and drain connections comes first.',descEs:'Un accesorio nuevo puede cambiar una habitación. Primero hay que revisar su compatibilidad con el suministro y drenaje existentes.',altEn:'Residential sink and fixture inspiration, concept image',altEs:'Inspiración de lavabo y accesorios, imagen de referencia'},
+  {file:'pipework',en:'Drain & Pipework',es:'Drenajes y tuberías',descEn:'The less visible part of the home deserves just as much attention. Photo: Santeri Viinamäki, CC BY-SA 4.0; concept image.',descEs:'La parte menos visible del hogar merece la misma atención. Foto: Santeri Viinamäki, CC BY-SA 4.0; imagen de referencia.',altEn:'Copper water pipes and connections, concept image',altEs:'Tuberías de cobre y conexiones, imagen de referencia'},
+  {file:'plumber',en:'Residential Plumbing',es:'Plomería residencial',descEn:'Everyday repairs begin with a closer look at the problem. Photo: rick, CC BY 2.0; concept image, not a company technician.',descEs:'Las reparaciones cotidianas empiezan por revisar el problema. Foto: rick, CC BY 2.0; imagen de referencia, no es un técnico de la empresa.',altEn:'Plumber working beneath a kitchen sink, concept image',altEs:'Plomero trabajando bajo un fregadero, imagen de referencia'}
+ ];
+ function renderGallery(){if(!gallery)return;const item=entries[selected],image=gallery.querySelector('img'),tabs=gallery.querySelectorAll('.gallery-tab');image.src='assets/photos/'+item.file+'.webp';image.alt=language==='es'?item.altEs:item.altEn;gallery.querySelector('.gallery-description').textContent=language==='es'?item.descEs:item.descEn;gallery.querySelector('.gallery-count').textContent=String(selected+1).padStart(2,'0')+' / 05';tabs.forEach((b,i)=>{b.classList.toggle('active',i===selected);b.setAttribute('aria-pressed',String(i===selected));b.querySelector('span').textContent=item&&entries[i][language]});gallery.querySelector('.gallery-rail').style.setProperty('--node',(selected*20+10)+'%');if(dialog?.open)renderLightbox()}
+ async function selectGallery(i){selected=(i+entries.length)%entries.length;clearTimeout(galleryTimer);const seq=++gallerySequence,button=gallery.querySelector('.gallery-image');if(!reduced.matches)button.classList.add('changing');galleryTimer=setTimeout(async()=>{const image=new Image();image.src='assets/photos/'+entries[selected].file+'.webp';try{await image.decode()}catch{}if(seq!==gallerySequence)return;renderGallery();button.classList.remove('changing')},reduced.matches?0:160)}
+ function renderLightbox(){const item=entries[selected];dialog.querySelector('img').src='assets/photos/'+item.file+'.webp';dialog.querySelector('img').alt=language==='es'?item.altEs:item.altEn;dialog.querySelector('.lightbox-caption').textContent=item[language]+' · '+(language==='es'?item.descEs:item.descEn)}
+ function closeLightbox(){dialog.close()}
+ if(gallery){const tabs=gallery.querySelector('.gallery-tabs');entries.forEach((item,i)=>{const b=document.createElement('button');b.className='gallery-tab';b.type='button';b.setAttribute('aria-pressed',String(i===0));b.innerHTML=`<small aria-hidden="true">0${i+1}</small><span></span>`;b.addEventListener('click',()=>selectGallery(i));b.addEventListener('keydown',e=>{if(['ArrowRight','ArrowDown','ArrowLeft','ArrowUp','Home','End'].includes(e.key)){e.preventDefault();const n=e.key==='Home'?0:e.key==='End'?4:(i+(['ArrowLeft','ArrowUp'].includes(e.key)?-1:1)+5)%5;selectGallery(n);tabs.children[n].focus()}});tabs.append(b)});
+  gallery.querySelector('.gallery-image').addEventListener('click',()=>{if(suppressGalleryClick){suppressGalleryClick=false;return}clearTimeout(galleryTimer);gallery.querySelector('.gallery-image').classList.remove('changing');renderGallery();if(typeof dialog.showModal!=='function'){window.open(gallery.querySelector('img').src,'_blank','noopener');return}priorFocus=gallery.querySelector('.gallery-image');renderLightbox();dialog.showModal();document.body.style.overflow='hidden';dialog.querySelector('.lightbox-close').focus()});
+  dialog.querySelector('.lightbox-close').addEventListener('click',closeLightbox);dialog.querySelector('.lightbox-prev').addEventListener('click',()=>{selected=(selected+4)%5;renderGallery()});dialog.querySelector('.lightbox-next').addEventListener('click',()=>{selected=(selected+1)%5;renderGallery()});dialog.addEventListener('keydown',e=>{if(e.key==='ArrowRight'){selected=(selected+1)%5;renderGallery()}if(e.key==='ArrowLeft'){selected=(selected+4)%5;renderGallery()}trap(e,dialog)});dialog.addEventListener('click',e=>{if(e.target===dialog){const r=dialog.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)closeLightbox()}});dialog.addEventListener('close',()=>{document.body.style.overflow='';priorFocus?.focus()});
+  let startX=0;gallery.querySelector('.gallery-image').addEventListener('touchstart',e=>{startX=e.changedTouches[0].clientX},{passive:true});gallery.querySelector('.gallery-image').addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-startX;if(Math.abs(dx)>70){suppressGalleryClick=true;setTimeout(()=>{suppressGalleryClick=false},400);selectGallery(selected+(dx<0?1:-1))}},{passive:true});
+ }
+ applyLanguage(language);
+ const review=$('.review-profile');if(review&&window.CHOICE_CONFIG?.googleReviewUrl){try{const url=new URL(window.CHOICE_CONFIG.googleReviewUrl);if(url.protocol==='https:'){review.href=url.href;review.hidden=false;review.rel='noopener noreferrer';review.target='_blank'}}catch{}}
+ // 1.75 seconds total, no video, sound, loading gate or layout changes.
+ let sessionAvailable=false;try{sessionStorage.setItem('choice-probe','1');sessionStorage.removeItem('choice-probe');sessionAvailable=true}catch{}
+ const intro=$('.intro');if(intro&&sessionAvailable&&!reduced.matches&&!storage.get('sessionStorage','choice-intro')&&Element.prototype.animate){
+  storage.set('sessionStorage','choice-intro','seen');intro.hidden=false;intro.setAttribute('aria-hidden','false');const logo=intro.querySelector('.intro-logo'),img=logo.querySelector('img');let stopped=false,travelTimer,hardStop;
+  const finish=()=>{if(stopped)return;stopped=true;clearTimeout(travelTimer);clearTimeout(hardStop);if(intro.contains(document.activeElement))$('.brand').focus();intro.hidden=true;intro.setAttribute('aria-hidden','true');logo.getAnimations().forEach(a=>a.cancel());if(!reduced.matches)$('.hero-grid')?.animate([{opacity:.75,transform:'translateY(6px)'},{opacity:1,transform:'none'}],{duration:350,easing:'ease-out'})};
+  intro.querySelector('.intro-skip').addEventListener('click',finish);const begin=()=>{if(stopped)return;logo.classList.add('intro-reveal');travelTimer=setTimeout(()=>{if(stopped)return;const target=$('.brand img').getBoundingClientRect(),source=logo.getBoundingClientRect();logo.style.animation='none';logo.style.opacity='1';logo.style.filter='none';logo.animate([{transform:'translate(-50%,-50%)'},{transform:`translate(calc(-50% + ${target.left+target.width/2-source.left-source.width/2}px),calc(-50% + ${target.top+target.height/2-source.top-source.height/2}px)) scale(${target.width/source.width})`}],{duration:450,easing:'cubic-bezier(.4,0,.2,1)',fill:'forwards'});intro.animate([{background:'#000'},{background:'transparent'}],{duration:450,fill:'forwards'});setTimeout(finish,450)},1150)};
+  if(img.complete)begin();else{img.addEventListener('load',begin,{once:true});img.addEventListener('error',finish,{once:true})}hardStop=setTimeout(finish,1750);
+ }
+})();
