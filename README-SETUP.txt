@@ -1,4 +1,4 @@
-1ST CHOICE PLUMBING SERVICES — RENOVATED MULTIPAGE SITE — V10
+1ST CHOICE PLUMBING SERVICES — RENOVATED MULTIPAGE SITE — V11
 
 DEPLOY TO GITHUB / VERCEL
 Extract the ZIP and upload its contents to the repository root. index.html, assets/, api/, areas/ and blog/ should be at that root, not inside another nested folder.
@@ -26,7 +26,7 @@ SEO
 The original https://1st-choice-plumbing-nine.vercel.app domain is retained in canonical URLs, Open Graph, Article JSON-LD, sitemap.xml and robots.txt. If the production domain changes, update those places consistently before launch. All original article and service-area URLs remain.
 
 VALIDATION
-See V10-UPDATE-NOTES.md for current checks and verification limits.
+See V11-UPDATE-NOTES.md and V10-UPDATE-NOTES.md for current checks and verification limits.
 
 Reference documentation:
 https://vercel.com/docs/functions/runtimes/node-js
