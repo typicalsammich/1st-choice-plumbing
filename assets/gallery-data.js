@@ -1,4 +1,4 @@
-// Supplied gallery media.
+// One record for each unique supplied photo or film.
 window.CHOICE_GALLERY = {
   "chapters": [
     {
@@ -35,6 +35,13 @@ window.CHOICE_GALLERY = {
       "es": "Acceso y equipo",
       "introEn": "The tools, materials and working space around the plumbing.",
       "introEs": "Las herramientas, materiales y espacio de trabajo alrededor de la plomería."
+    },
+    {
+      "id": "pipe-interior",
+      "en": "Inside the pipe",
+      "es": "Interior de tubería",
+      "introEn": "A pipe-camera perspective. The surrounding room or route is not visible.",
+      "introEs": "Perspectiva desde la tubería. El cuarto o recorrido alrededor no se ve."
     }
   ],
   "items": [
@@ -50,7 +57,12 @@ window.CHOICE_GALLERY = {
       "poster": "assets/work/trench-wide.webp",
       "thumbnail": "assets/work/trench-wide-thumb.webp",
       "width": 1600,
-      "height": 1200
+      "height": 1200,
+      "zone": "buried",
+      "areaEn": "Exterior drain line",
+      "areaEs": "Drenaje exterior",
+      "detailsEn": "The wide framing makes the relationship between the vertical access and horizontal branches visible. Exposed soil defines the working area, while the black pipe and banded connections show the junction from above. This view belongs to the buried exterior drain zone of the illustrative house; it does not establish the full route beyond the excavation.",
+      "detailsEs": "La vista amplia muestra la relación entre acceso vertical y ramales horizontales. Se ven tierra, tubería negra y conexiones. Corresponde al drenaje exterior enterrado del modelo; no establece el recorrido completo."
     },
     {
       "id": "trench-close",
@@ -64,7 +76,12 @@ window.CHOICE_GALLERY = {
       "poster": "assets/work/trench-close.webp",
       "thumbnail": "assets/work/trench-close-thumb.webp",
       "width": 1200,
-      "height": 1600
+      "height": 1600,
+      "zone": "buried",
+      "areaEn": "Exterior drain line",
+      "areaEs": "Drenaje exterior",
+      "detailsEn": "The closer angle concentrates on the vertical section and the adjacent branch. It is useful for seeing the transition between the upright access and the buried line, but it does not show every connected fixture. The house view places this with the exterior drainage rather than inside a room.",
+      "detailsEs": "El ángulo cercano destaca la sección vertical y ramal. Muestra su transición, no todos los accesorios conectados. Se ubica en drenaje exterior, no dentro de un cuarto."
     },
     {
       "id": "trench-connection",
@@ -78,7 +95,12 @@ window.CHOICE_GALLERY = {
       "poster": "assets/work/trench-connection.webp",
       "thumbnail": "assets/work/trench-connection-thumb.webp",
       "width": 900,
-      "height": 1600
+      "height": 1600,
+      "zone": "buried",
+      "areaEn": "Exterior drain line",
+      "areaEs": "Drenaje exterior",
+      "detailsEn": "A second angle reveals the pipe junction beside the excavation and the limited working space around it. The visible detail is a drain connection in the ground. No exact depth, pipe specification or property location is inferred from this image.",
+      "detailsEs": "Otro ángulo muestra la unión junto a la excavación y el espacio de trabajo. Es una conexión en tierra. No se infieren profundidad, especificaciones o dirección."
     },
     {
       "id": "shower-wall",
@@ -92,7 +114,12 @@ window.CHOICE_GALLERY = {
       "poster": "assets/work/shower-wall.webp",
       "thumbnail": "assets/work/shower-wall-thumb.webp",
       "width": 900,
-      "height": 1600
+      "height": 1600,
+      "zone": "wall",
+      "areaEn": "Wall plumbing",
+      "areaEs": "Plomería en paredes",
+      "detailsEn": "The shower enclosure provides visible bathroom context. A tall strip of opened wall exposes the pipe route and surrounding framing, showing work normally hidden behind the finished surface. The wall-plumbing hotspot is the representative location for this photograph.",
+      "detailsEs": "La ducha aporta contexto visible de baño. La abertura alta expone recorrido y estructura, normalmente ocultos. El punto de pared es su ubicación representativa."
     },
     {
       "id": "wall-drain",
@@ -106,7 +133,88 @@ window.CHOICE_GALLERY = {
       "poster": "assets/work/wall-drain.webp",
       "thumbnail": "assets/work/wall-drain-thumb.webp",
       "width": 900,
-      "height": 1600
+      "height": 1600,
+      "zone": "wall",
+      "areaEn": "Wall plumbing",
+      "areaEs": "Plomería en paredes",
+      "detailsEn": "Black drainage fittings and a vertical line are visible between the framing and the remaining finish. The opened surface allows the pipe arrangement to be seen directly. It is mapped to the wall cavity, rather than assigning an unseen route through the rest of the home.",
+      "detailsEs": "Se ven conexiones negras y línea vertical entre estructura y acabado. La superficie abierta muestra la disposición. Se ubica en la pared, sin asignar un recorrido oculto."
+    },
+    {
+      "id": "wall-supply",
+      "chapter": "behind-walls",
+      "type": "image",
+      "en": "The open wall supply routes",
+      "es": "Recorridos de suministro en la pared",
+      "descriptionEn": "Red and blue supply lines, black drain pipe and exposed timber framing within a tall wall opening.",
+      "descriptionEs": "Líneas rojas y azules, drenaje negro y estructura de madera dentro de una abertura alta.",
+      "zone": "wall",
+      "src": "assets/work/wall-supply.webp",
+      "poster": "assets/work/wall-supply.webp",
+      "thumbnail": "assets/work/wall-supply-thumb.webp",
+      "width": 1200,
+      "height": 1600,
+      "areaEn": "Wall plumbing",
+      "areaEs": "Plomería en paredes",
+      "detailsEn": "The open wall reveals parallel red and blue supply lines alongside black drainage and timber studs. The material routes are visible before the surface covers them. It is mapped to a wall cavity; the image alone does not confirm the exact room or the complete distribution system.",
+      "detailsEs": "La pared abierta revela suministro rojo y azul, drenaje y madera. Los recorridos se ven sin cobertura. Se ubica en pared; la foto no confirma el cuarto ni todo el sistema."
+    },
+    {
+      "id": "wall-finish",
+      "chapter": "behind-walls",
+      "type": "image",
+      "en": "The enclosed wall surface",
+      "es": "La superficie cerrada de la pared",
+      "descriptionEn": "A light-colored wall surface with visible openings and an exposed horizontal pipe at its lower edge.",
+      "descriptionEs": "Superficie clara con aberturas visibles y una tubería horizontal en el borde inferior.",
+      "zone": "wall",
+      "src": "assets/work/wall-finish.webp",
+      "poster": "assets/work/wall-finish.webp",
+      "thumbnail": "assets/work/wall-finish-thumb.webp",
+      "width": 1200,
+      "height": 1600,
+      "areaEn": "Wall plumbing",
+      "areaEs": "Plomería en paredes",
+      "detailsEn": "The light-colored surface now hides most of the wall interior, leaving visible openings and a horizontal pipe at the lower edge. This is a separate supplied photograph from the open-framing view. It is shown in the same general wall-work category without presenting the two as a verified before-and-after project.",
+      "detailsEs": "La superficie oculta el interior, dejando aberturas y tubería inferior. Es otra foto, agrupada como pared sin afirmar un antes y después verificado."
+    },
+    {
+      "id": "toilet-opening",
+      "chapter": "behind-walls",
+      "type": "image",
+      "en": "At the toilet opening",
+      "es": "En la abertura del inodoro",
+      "descriptionEn": "The toilet is removed, exposing the drain opening and visibly worn material around its edge in the tiled floor.",
+      "descriptionEs": "Sin el inodoro se ve la abertura y material desgastado alrededor, en el piso de azulejos.",
+      "zone": "toilet",
+      "src": "assets/work/toilet-opening.webp",
+      "poster": "assets/work/toilet-opening.webp",
+      "thumbnail": "assets/work/toilet-opening-thumb.webp",
+      "width": 1200,
+      "height": 1600,
+      "areaEn": "Toilet connection",
+      "areaEs": "Conexión del inodoro",
+      "detailsEn": "With the toilet removed, the floor opening and visibly deteriorated material around it can be inspected. The tile establishes the floor-level bathroom context. This view is placed at the toilet connection in the model, not on the exterior sewer line.",
+      "detailsEs": "Sin inodoro se observa abertura y material deteriorado. El azulejo muestra contexto de piso de baño. Se ubica en conexión de inodoro, no drenaje exterior."
+    },
+    {
+      "id": "toilet-flange",
+      "chapter": "behind-walls",
+      "type": "image",
+      "en": "The toilet flange connection",
+      "es": "La conexión de la brida del inodoro",
+      "descriptionEn": "A round flange assembly and mounting bolts are visible at the toilet drain opening, surrounded by the existing tile.",
+      "descriptionEs": "Brida circular y pernos visibles en la abertura del inodoro, rodeados por el azulejo existente.",
+      "zone": "toilet",
+      "src": "assets/work/toilet-flange.webp",
+      "poster": "assets/work/toilet-flange.webp",
+      "thumbnail": "assets/work/toilet-flange-thumb.webp",
+      "width": 1200,
+      "height": 1600,
+      "areaEn": "Toilet connection",
+      "areaEs": "Conexión del inodoro",
+      "detailsEn": "The round flange and mounting bolts are visible where a toilet connects to the drain below. The close framing allows the connection detail to be seen without hiding it behind the fixture. This belongs at the toilet base in the house view; the photo does not prove any unpictured installation outcome.",
+      "detailsEs": "Se ven brida y pernos donde conecta el inodoro al drenaje. La vista cercana permite inspeccionar el detalle. Se ubica en la base, sin afirmar un resultado no mostrado."
     },
     {
       "id": "copper-detail",
@@ -120,7 +228,12 @@ window.CHOICE_GALLERY = {
       "poster": "assets/work/copper-detail.webp",
       "thumbnail": "assets/work/copper-detail-thumb.webp",
       "width": 1600,
-      "height": 1200
+      "height": 1200,
+      "zone": "supply",
+      "areaEn": "Supply connections",
+      "areaEs": "Conexiones de suministro",
+      "detailsEn": "The copper assembly shows changes in direction, a tee connection and a visible valve handle near the lower section. The surface and surroundings do not establish which room or equipment it serves. It is therefore mapped to supply connections as a system area, without labeling it as a water-heater installation.",
+      "detailsEs": "El cobre muestra codos, una T y manija de válvula inferior. No se establece qué cuarto o equipo sirve. Se ubica en suministro, sin llamarlo instalación de calentador."
     },
     {
       "id": "copper-wall",
@@ -134,7 +247,12 @@ window.CHOICE_GALLERY = {
       "poster": "assets/work/copper-wall.webp",
       "thumbnail": "assets/work/copper-wall-thumb.webp",
       "width": 1200,
-      "height": 1600
+      "height": 1600,
+      "zone": "supply",
+      "areaEn": "Supply connections",
+      "areaEs": "Conexiones de suministro",
+      "detailsEn": "The copper pipework runs across a painted wall and turns upward on both sides. Its fittings and nearby open lower section are visible, while the complete connected system is not. The house view groups it by the supply work shown rather than guessing the room.",
+      "detailsEs": "El cobre cruza una pared y sube por ambos lados. Se ven conexiones y sección inferior abierta, no todo el sistema. Se agrupa por suministro sin adivinar el cuarto."
     },
     {
       "id": "underfloor-line",
@@ -148,7 +266,12 @@ window.CHOICE_GALLERY = {
       "poster": "assets/work/underfloor-line.webp",
       "thumbnail": "assets/work/underfloor-line-thumb.webp",
       "width": 1200,
-      "height": 1600
+      "height": 1600,
+      "zone": "underfloor",
+      "areaEn": "Underfloor drainage",
+      "areaEs": "Drenaje bajo el piso",
+      "detailsEn": "The camera looks along the drain line below timber floor framing. The long perspective shows the pipe route within the low space and the relationship to the joists above. This is placed beneath the house in the model, separate from the room-level wall work.",
+      "detailsEs": "La cámara sigue el drenaje bajo la estructura de madera. La perspectiva muestra su relación con vigas. Se ubica bajo la casa, separado de paredes."
     },
     {
       "id": "underfloor-detail",
@@ -162,7 +285,12 @@ window.CHOICE_GALLERY = {
       "poster": "assets/work/underfloor-detail.webp",
       "thumbnail": "assets/work/underfloor-detail-thumb.webp",
       "width": 1200,
-      "height": 1600
+      "height": 1600,
+      "zone": "underfloor",
+      "areaEn": "Underfloor drainage",
+      "areaEs": "Drenaje bajo el piso",
+      "detailsEn": "This angle emphasizes a junction beneath the floor, with other pipe runs and the framing above in view. The setting visibly supports an underfloor placement. The image is a different view from the longer drain-line photograph, not a duplicate gallery entry.",
+      "detailsEs": "Este ángulo destaca una unión bajo el piso, otros recorridos y estructura superior. El entorno permite ubicarlo debajo. Es otra vista, no una entrada duplicada."
     },
     {
       "id": "trench-film",
@@ -176,7 +304,12 @@ window.CHOICE_GALLERY = {
       "poster": "assets/work/trench-film-poster.webp",
       "thumbnail": "assets/work/trench-film-thumb.webp",
       "width": 576,
-      "height": 1024
+      "height": 1024,
+      "zone": "outdoor",
+      "areaEn": "Outdoor access & setup",
+      "areaEs": "Acceso y preparación exterior",
+      "detailsEn": "The clip follows an outdoor drain access with a hose at the opening and surrounding ground visible. A moving view can show details that a single frame misses. It is mapped to outdoor access; no interior room is inferred.",
+      "detailsEs": "El video sigue un acceso exterior con manguera y terreno visible. Aporta detalles en movimiento. Se ubica en acceso exterior, sin inferir un cuarto."
     },
     {
       "id": "additional-01",
@@ -190,7 +323,12 @@ window.CHOICE_GALLERY = {
       "poster": "assets/work/additional-01.webp",
       "thumbnail": "assets/work/additional-01-thumb.webp",
       "width": 960,
-      "height": 1280
+      "height": 1280,
+      "zone": "outdoor",
+      "areaEn": "Outdoor access & setup",
+      "areaEs": "Acceso y preparación exterior",
+      "detailsEn": "Equipment and hoses are arranged on the paved outdoor area near an access point. The surroundings show the working space, not a hidden interior pipe location. It is grouped with outdoor access and equipment in the house explorer.",
+      "detailsEs": "Equipo y mangueras en zona pavimentada cerca de acceso. Muestra espacio de trabajo, no tubería interior oculta. Se agrupa con acceso y equipo exterior."
     },
     {
       "id": "additional-02",
@@ -204,7 +342,12 @@ window.CHOICE_GALLERY = {
       "poster": "assets/work/additional-02.webp",
       "thumbnail": "assets/work/additional-02-thumb.webp",
       "width": 1200,
-      "height": 1600
+      "height": 1600,
+      "zone": "outdoor",
+      "areaEn": "Outdoor access & setup",
+      "areaEs": "Acceso y preparación exterior",
+      "detailsEn": "The exterior side of the building, laid-out materials and flexible orange hose provide context for the setup. The photo does not by itself identify a completed lining or the condition of an unseen pipe. Its placement is the outdoor working area.",
+      "detailsEs": "El lateral, materiales y manguera naranja muestran preparación. No identifica por sí sola un revestimiento terminado ni condición de una tubería oculta. Se ubica afuera."
     },
     {
       "id": "detail-film",
@@ -218,7 +361,106 @@ window.CHOICE_GALLERY = {
       "poster": "assets/work/detail-film-poster.webp",
       "thumbnail": "assets/work/detail-film-thumb.webp",
       "width": 320,
-      "height": 568
+      "height": 568,
+      "zone": "outdoor",
+      "areaEn": "Outdoor access & setup",
+      "areaEs": "Acceso y preparación exterior",
+      "detailsEn": "The red-framed equipment and materials are visible in the outdoor work area. The clip gives context for the equipment and access arrangements. Playback uses the supplied audio but begins muted until the viewer chooses otherwise.",
+      "detailsEs": "Se ven equipo rojo y materiales en zona exterior. Aporta contexto de equipo y acceso. Conserva audio, inicialmente silenciado."
+    },
+    {
+      "id": "exterior-access",
+      "chapter": "on-site",
+      "type": "image",
+      "en": "Beside the exterior pipe access",
+      "es": "Junto al acceso exterior",
+      "descriptionEn": "A capped vertical fitting sits beside the building, with nearby flexible ducting, planting and the exterior wall.",
+      "descriptionEs": "Una conexión vertical tapada junto al edificio, conductos flexibles, plantas y pared exterior.",
+      "zone": "outdoor",
+      "src": "assets/work/exterior-access.webp",
+      "poster": "assets/work/exterior-access.webp",
+      "thumbnail": "assets/work/exterior-access-thumb.webp",
+      "width": 1200,
+      "height": 1600,
+      "areaEn": "Outdoor access & setup",
+      "areaEs": "Acceso y preparación exterior",
+      "detailsEn": "The fitting and its cap are photographed immediately beside the building, with nearby ducting and plants. The exterior setting is visible, but the connected underground route is not. The model uses the outdoor access point rather than assigning this to a kitchen or bathroom.",
+      "detailsEs": "La conexión tapada está junto al edificio, conductos y plantas. Se ve el exterior, no el recorrido enterrado. Se ubica en acceso exterior, no cocina o baño."
+    },
+    {
+      "id": "street-setup",
+      "chapter": "on-site",
+      "type": "image",
+      "en": "The street-side work setup",
+      "es": "Preparación del trabajo junto a la calle",
+      "descriptionEn": "Vehicles and traffic cones are visible along the residential street. This photograph shows the surroundings and access, not an interior plumbing location.",
+      "descriptionEs": "Vehículos y conos junto a una calle residencial. La foto muestra entorno y acceso, no una ubicación interior.",
+      "zone": "outdoor",
+      "src": "assets/work/street-setup.webp",
+      "poster": "assets/work/street-setup.webp",
+      "thumbnail": "assets/work/street-setup-thumb.webp",
+      "width": 1600,
+      "height": 1200,
+      "areaEn": "Outdoor access & setup",
+      "areaEs": "Acceso y preparación exterior",
+      "detailsEn": "Vehicles, cones and the residential street show the site surroundings and working access. This is contextual photography rather than a close-up of a plumbing connection. It is kept with the outdoor setup so it is not misleadingly pinned inside the house.",
+      "detailsEs": "Vehículos, conos y calle muestran entorno y acceso. Es contexto, no una conexión cercana. Se mantiene afuera para no situarla dentro de forma engañosa."
+    },
+    {
+      "id": "new-site-film",
+      "chapter": "pipe-interior",
+      "type": "video",
+      "en": "Inside the pipe",
+      "es": "Dentro de la tubería",
+      "descriptionEn": "An interior pipe view with a circular opening, a central tool or hose and textured pipe walls.",
+      "descriptionEs": "Vista interior con abertura circular, herramienta o manguera central y paredes de tubería.",
+      "zone": "pipe-interior",
+      "src": "assets/work/new-site-film.mp4",
+      "poster": "assets/work/new-site-film-poster.webp",
+      "thumbnail": "assets/work/new-site-film-thumb.webp",
+      "width": 576,
+      "height": 432,
+      "areaEn": "Pipe interior · route not shown",
+      "areaEs": "Interior de tubería · recorrido no mostrado",
+      "detailsEn": "The video is a view from inside a pipe, with an on-screen time overlay. The interior wall and a tool or hose can be observed, but the room, route and exterior access are not shown. It belongs to the pipe-interior system detail in the house explorer, rather than being assigned to an unverified kitchen, bathroom or yard location. The clip is included in full.",
+      "detailsEs": "El video muestra el interior con hora en pantalla, paredes y una herramienta o manguera. No se ven cuarto, recorrido ni acceso exterior. Se ubica en el detalle del sistema interior de tubería, sin asignarlo a cocina, baño o patio no verificados. Se incluye completo."
+    }
+  ],
+  "zones": [
+    {
+      "id": "wall",
+      "en": "Wall plumbing",
+      "es": "Plomería en paredes"
+    },
+    {
+      "id": "toilet",
+      "en": "Toilet connection",
+      "es": "Conexión del inodoro"
+    },
+    {
+      "id": "underfloor",
+      "en": "Underfloor drainage",
+      "es": "Drenaje bajo el piso"
+    },
+    {
+      "id": "supply",
+      "en": "Supply connections",
+      "es": "Conexiones de suministro"
+    },
+    {
+      "id": "buried",
+      "en": "Exterior drain line",
+      "es": "Drenaje exterior"
+    },
+    {
+      "id": "outdoor",
+      "en": "Outdoor access & setup",
+      "es": "Acceso y preparación exterior"
+    },
+    {
+      "id": "pipe-interior",
+      "en": "Inside the pipe",
+      "es": "Interior de tubería"
     }
   ]
 };

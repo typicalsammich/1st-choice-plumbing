@@ -80,5 +80,49 @@
     "height": 568,
     "poster": "detail-film-poster.webp",
     "audio": "preserved; playback initially muted"
+  },
+  {
+    "source": "IMG_7149.jpeg",
+    "file": "exterior-access.webp",
+    "width": 1200,
+    "height": 1600
+  },
+  {
+    "source": "IMG_7658.jpeg",
+    "file": "toilet-opening.webp",
+    "width": 1200,
+    "height": 1600
+  },
+  {
+    "source": "IMG_7661.jpeg",
+    "file": "toilet-flange.webp",
+    "width": 1200,
+    "height": 1600
+  },
+  {
+    "source": "IMG_1636.heic",
+    "file": "street-setup.webp",
+    "width": 1600,
+    "height": 1200
+  },
+  {
+    "source": "a8b49315-5c83-445f-a975-02c2e4094138.JPG",
+    "file": "wall-supply.webp",
+    "width": 1200,
+    "height": 1600
+  },
+  {
+    "source": "af455c58-ee42-4e88-b45a-859e1a10dd05.JPG",
+    "file": "wall-finish.webp",
+    "width": 1200,
+    "height": 1600
+  },
+  {
+    "source": "2026-09-19T091110.MOV",
+    "file": "new-site-film.mp4",
+    "width": 576,
+    "height": 432,
+    "poster": "new-site-film-poster.webp",
+    "audio": "preserved; playback initially muted"
   }
 ]

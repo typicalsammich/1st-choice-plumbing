@@ -74,7 +74,7 @@
  function renderLightbox(play){
   const item=current(),photo=dlg('.work-lightbox-image'),video=dlg('video');releaseVideo();
   dlg('.work-lightbox-kind').textContent=text('INSIDE THE WORK','DETRÁS DEL TRABAJO')+' / '+String(selected+1).padStart(2,'0');
-  dlg('.work-lightbox-title').textContent=item[lang];dlg('.work-lightbox-description').textContent=item[lang==='es'?'descriptionEs':'descriptionEn'];
+  dlg('.work-lightbox-title').textContent=item[lang];dlg('.work-lightbox-description').textContent=item[lang==='es'?'descriptionEs':'descriptionEn']+' '+(item[lang==='es'?'detailsEs':'detailsEn']||'');
   photo.hidden=item.type==='video';video.hidden=item.type!=='video';
   if(item.type==='video'){
    photo.removeAttribute('src');video.poster=item.poster;video.src=item.src;video.muted=true;video.setAttribute('aria-label',item[lang]);video.load();

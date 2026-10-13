@@ -1,7 +1,8 @@
 
 export default async function handler(req,res){
  if(req.method!=='POST')return res.status(405).json({error:'Method not allowed'});
- const {CONTACT_EMAIL,RESEND_API_KEY,RESEND_FROM_EMAIL}=process.env;
+ const {RESEND_API_KEY,RESEND_FROM_EMAIL}=process.env;
+ const CONTACT_EMAIL=process.env.CONTACT_EMAIL||'1stchoiceplumbing31@gmail.com';
  if(!CONTACT_EMAIL||!RESEND_API_KEY||!RESEND_FROM_EMAIL)return res.status(503).json({error:'Email delivery is not configured yet.'});
  const fields=req.body||{};
  if(fields.website)return res.status(400).json({error:'Invalid submission.'});

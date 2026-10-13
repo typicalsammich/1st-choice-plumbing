@@ -14,6 +14,7 @@
   $$('[data-lang]').forEach(b=>{b.classList.toggle('active',b.dataset.lang===l);b.setAttribute('aria-pressed',String(b.dataset.lang===l))});
   storage.set('localStorage','choice-lang',l);
   window.choiceGallery?.setLanguage(l);
+  window.choiceHouseGallery?.setLanguage(l);
   $$('[data-contact-form]').forEach(f=>{f.querySelectorAll('input,textarea,select').forEach(el=>el.setCustomValidity(''));const s=f.querySelector('.form-status');if(s.dataset.state)formStatus(s,s.dataset.state)});
  }
  function switchLanguage(l){clearTimeout(languageTimer);if(reduced.matches){applyLanguage(l);return}document.body.classList.add('lang-ready','lang-changing');languageTimer=setTimeout(()=>{applyLanguage(l);document.body.classList.remove('lang-changing')},120)}
