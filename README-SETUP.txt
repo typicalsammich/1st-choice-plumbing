@@ -1,4 +1,4 @@
-1ST CHOICE PLUMBING SERVICES — RENOVATED MULTIPAGE SITE
+1ST CHOICE PLUMBING SERVICES — RENOVATED MULTIPAGE SITE — V9
 
 DEPLOY TO GITHUB / VERCEL
 Extract the ZIP and upload its contents to the repository root. index.html, assets/, api/, areas/ and blog/ should be at that root, not inside another nested folder.
@@ -26,7 +26,7 @@ SEO
 The original https://1st-choice-plumbing-nine.vercel.app domain is retained in canonical URLs, Open Graph, Article JSON-LD, sitemap.xml and robots.txt. If the production domain changes, update those places consistently before launch. All original article and service-area URLs remain.
 
 VALIDATION
-All 41 HTML pages passed local-link, anchor, H1, form and metadata audits. 2,932 simulated DOM assertions passed. Ten email-endpoint cases passed with mocked provider responses; no email was sent. See RENOVATION-NOTES.md for details.
+All 41 HTML pages passed local-link, anchor, H1, form and metadata audits. 2,956 simulated DOM assertions passed for V9. Ten email-endpoint cases passed with mocked provider responses; no email was sent. See V9-UPDATE-NOTES.md for current details.
 Browser preview failed due local connection timeout and then a browser security-policy rejection. Visual QA at 1440, 1024, 768, 390 and 360px and physical Safari/Chrome testing remain unverified. Live email needs the configuration above.
 
 Reference documentation:

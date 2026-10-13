@@ -1,3 +1,4 @@
-1st Choice Plumbing Services — renovated V8
-Start with README-SETUP.txt for deployment and email setup.
-See RENOVATION-NOTES.md for design, owner information and actual QA coverage.
+1st Choice Plumbing Services — V9
+Read README-SETUP.txt for deployment and email settings.
+V9-UPDATE-NOTES.md documents arrow removal, supplied-media gallery, city copy and actual verification.
+RENOVATION-NOTES.md records the prior renovation baseline.

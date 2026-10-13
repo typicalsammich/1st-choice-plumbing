@@ -1,0 +1,84 @@
+[
+  {
+    "source": "IMG_4495.jpeg",
+    "file": "trench-close.webp",
+    "width": 1200,
+    "height": 1600
+  },
+  {
+    "source": "IMG_4500.jpeg",
+    "file": "trench-wide.webp",
+    "width": 1600,
+    "height": 1200
+  },
+  {
+    "source": "3FBB0807-E950-46ED-AB9D-344516BA0E7B.JPG",
+    "file": "wall-drain.webp",
+    "width": 900,
+    "height": 1600
+  },
+  {
+    "source": "6144DCF3-506B-4060-A54D-5E0DD4CBA53B.JPG",
+    "file": "shower-wall.webp",
+    "width": 900,
+    "height": 1600
+  },
+  {
+    "source": "B455F56B-9391-44E6-83D3-1F19D7A975B5.JPG",
+    "file": "trench-connection.webp",
+    "width": 900,
+    "height": 1600
+  },
+  {
+    "source": "IMG_7227.jpeg",
+    "file": "copper-detail.webp",
+    "width": 1600,
+    "height": 1200
+  },
+  {
+    "source": "IMG_7278.jpeg",
+    "file": "copper-wall.webp",
+    "width": 1200,
+    "height": 1600
+  },
+  {
+    "source": "IMG_7854.jpeg",
+    "file": "underfloor-detail.webp",
+    "width": 1200,
+    "height": 1600
+  },
+  {
+    "source": "IMG_7858.jpeg",
+    "file": "underfloor-line.webp",
+    "width": 1200,
+    "height": 1600
+  },
+  {
+    "source": "IMG_0891.HEIC",
+    "file": "additional-01.webp",
+    "width": 960,
+    "height": 1280
+  },
+  {
+    "source": "IMG_7744.HEIC",
+    "file": "additional-02.webp",
+    "width": 1200,
+    "height": 1600
+  },
+  {
+    "source": "IMG_4480.mov",
+    "file": "trench-film.mp4",
+    "width": 576,
+    "height": 1024,
+    "poster": "trench-film-poster.webp",
+    "audio": "preserved; playback initially muted"
+  },
+  {
+    "source": "IMG_4487.MOV",
+    "file": "detail-film.mp4",
+    "width": 320,
+    "height": 568,
+    "poster": "detail-film-poster.webp",
+    "audio": "preserved; playback initially muted"
+  }
+]

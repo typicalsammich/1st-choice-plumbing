@@ -1,4 +1,6 @@
-# 1st Choice Plumbing Services — website renovation
+Current version: V9. The gallery and city content below describe the earlier baseline and are superseded by V9-UPDATE-NOTES.md.
+
+# 1st Choice Plumbing Services — original renovation baseline
 
 The existing static multipage structure is retained. No framework, animation library or runtime frontend dependency was added. All 34 original HTML URLs remain, with six new article URLs and a photography-credit page (41 HTML pages total).
 
