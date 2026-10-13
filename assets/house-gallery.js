@@ -6,7 +6,7 @@
  let lang='en',selected=0,zone=null,model=null,mode='cutaway',savedOverflow='',opener;
  try{lang=localStorage.getItem('choice-lang')==='es'?'es':'en'}catch{}
  const current=()=>items[selected],filtered=()=>zone?items.filter(i=>i.zone===zone):items;
- const fallbackPositions={wall:[27,39],toilet:[39,54],underfloor:[48,71],supply:[68,39],buried:[82,68],outdoor:[31,85],'pipe-interior':[71,84]};
+ const fallbackPositions={wall:[27,39],toilet:[39,54],underfloor:[48,71],supply:[82,49],buried:[82,68],outdoor:[31,85],'pipe-interior':[71,84]};
  const hotButtons=[],areaButtons=[],catalogueButtons=[];
  const leaders=document.createElementNS('http://www.w3.org/2000/svg','svg');leaders.classList.add('house-leaders');leaders.setAttribute('aria-hidden','true');stage.append(leaders);const leaderLines={};
  zones.forEach((area,index)=>{
@@ -27,7 +27,7 @@
   find('.house-inspect-image').setAttribute('aria-label',text('Open: ','Abrir: ')+item[lang]);
   zones.forEach((area,i)=>{const amount=items.filter(item=>item.zone===area.id).length;hotButtons[i].setAttribute('aria-label',area[lang]+' · '+amount+' '+text('views','vistas'));hotButtons[i].setAttribute('aria-pressed',String(zone===area.id));hotButtons[i].classList.toggle('active',zone===area.id);areaButtons[i].querySelector('.house-area-name').textContent=area[lang];areaButtons[i].querySelector('small').textContent=amount+' '+text('views','vistas');areaButtons[i].setAttribute('aria-pressed',String(zone===area.id));areaButtons[i].classList.toggle('active',zone===area.id)});
   catalogueButtons.forEach((button,i)=>{const item=items[i];button.hidden=!!zone&&item.zone!==zone;button.querySelector('.house-media-name').textContent=item[lang];button.querySelector('.house-media-area').textContent=text(item.type==='video'?'Film · ':'Photo · ',item.type==='video'?'Video · ':'Foto · ')+item[lang==='es'?'areaEs':'areaEn'];button.setAttribute('aria-label',text('Open full detail: ','Abrir detalle completo: ')+item[lang]);button.setAttribute('aria-pressed',String(i===selected));button.classList.toggle('active',i===selected)});
-  find('.house-all').setAttribute('aria-pressed',String(!zone));find('.house-catalogue-top h2').textContent=text(zone?'Work in this area':'The full work journal',zone?'Trabajo en esta área':'El registro completo del trabajo');
+  find('.house-all').setAttribute('aria-pressed',String(!zone));find('.house-catalogue-top h2').textContent=text(zone?'Work in this area':'All project photos & videos',zone?'Trabajo en esta área':'Todas las fotos y videos');
   find('.house-model-status').textContent=text(model?'Select an area to move closer. The house is representative.':'House plan view. All photographs and films remain available below.',model?'Elige un área para acercarte. La casa es representativa.':'Vista en plano. Todas las fotos y videos están disponibles abajo.');const note=find('.house-stage-note');note.dataset.en=model?'Choose a numbered area. Drag the model to look around.':'Choose a numbered area to see the work.';note.dataset.es=model?'Elige un área numerada. Arrastra el modelo para mirar alrededor.':'Elige un área numerada para ver el trabajo.';note.textContent=note.dataset[lang];
  }
  function setMode(value){mode=value;root.querySelectorAll('[data-house-view]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.houseView===mode)));model?.setView(value);stage.dataset.view=value;}
