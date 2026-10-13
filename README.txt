@@ -1,3 +1,1 @@
-1st Choice Plumbing Services website draft
-Open index.html locally.
-Replace placeholder imagery, phone number, and service-area placeholders once confirmed.
+V5 complete redesign. Open index.html. Replace stock/remote image placeholders with licensed local files before production. Confirm 24/7 availability, service areas and service list with business owner. Site includes EN/ES, 22 local pages, 6 blog posts, mobile menu and call CTA.
