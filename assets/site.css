@@ -3,3 +3,7 @@
 /* Final responsive header refinements */
 @media(max-width:820px){.header-actions{gap:6px}.lang{position:static;box-shadow:none}.lang button{padding:8px 9px;font-size:11px}.header-inner{grid-template-columns:minmax(95px,1fr) auto minmax(95px,1fr)}.hero{padding-top:46px}.badges{gap:4px}.badge-line{font-size:9px}.badge-line img,.badge-line svg{width:16px;height:16px}}
 @media(max-width:390px){.header-inner{grid-template-columns:minmax(77px,1fr) auto minmax(100px,1fr)}.brand img{width:84px}.badges{gap:2px}.badge-line{font-size:8px}.lang button{padding:7px}.menu-btn{width:37px;height:39px}.header-actions{gap:4px}}
+/* V6: strict black backgrounds across all pages and viewport sizes. */
+:root{--bg:#000;--surface:#000;--surface2:#000}
+html,body,.header,.topline,.hero,.section,.section-alt,.areas,.cta,.footer,.page-head,.service,.article-card,.area-grid a,.nav,.hero-image,.lang,.btn-outline{background:#000!important;background-image:none!important}
+@media(max-width:820px){.nav,.nav.open{background:#000!important}}
