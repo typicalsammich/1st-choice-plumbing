@@ -12,3 +12,7 @@
 
 /* No arrow glyphs or emoji decorations on any viewport. */
 .btn-red:after,.header-call:before,.area-grid a:after{content:none!important;display:none!important}
+
+.hero-photo img{object-position:center 62%}
+
+.hero-image img{object-position:center 62%;filter:none}
