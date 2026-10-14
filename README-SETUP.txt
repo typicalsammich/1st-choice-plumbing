@@ -1,4 +1,4 @@
-1ST CHOICE PLUMBING SERVICES — RENOVATED MULTIPAGE SITE — V12
+1ST CHOICE PLUMBING SERVICES — RENOVATED MULTIPAGE SITE — V13
 
 DEPLOY TO GITHUB / VERCEL
 Extract the ZIP and upload its contents to the repository root. index.html, assets/, api/, areas/ and blog/ should be at that root, not inside another nested folder.
@@ -19,14 +19,13 @@ REVIEWS
 Set the verified Google review profile URL in assets/config.js. The review button is hidden until that URL is configured. Add only approved, verified customer feedback; there are no fabricated quotes, counts or star ratings.
 
 PHOTOGRAPHY
-Concept images are local optimized WebP files. They are explicitly labeled and credited on photo-credits.html. Replace them with approved real photography and update the five entries records in assets/site.js, including both languages and alt descriptions. Retain attribution/license links while the licensed concept images are used.
-Fonts are bundled locally. Their OFL license notices are in assets/fonts/.
+All project photos and videos are supplied by the plumber. The supplied company logo is used throughout, including the cinematic intro. No stock or concept photographs are included. Fonts and their licenses remain bundled locally.
 
 SEO
 The original https://1st-choice-plumbing-nine.vercel.app domain is retained in canonical URLs, Open Graph, Article JSON-LD, sitemap.xml and robots.txt. If the production domain changes, update those places consistently before launch. All original article and service-area URLs remain.
 
 VALIDATION
-See V12-UPDATE-NOTES.md for current checks and verification limits.
+See V13-UPDATE-NOTES.md for current checks and verification limits.
 
 Reference documentation:
 https://vercel.com/docs/functions/runtimes/node-js
